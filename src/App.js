@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import './index.less'
+import { Button } from 'antd'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           Learn React
         </a>
         <span className="title">Lebron James</span>
+        <Button type="primary">AntD点击一下</Button>
       </header>
     </div>
   );

@@ -136,6 +136,27 @@ module.exports = function(webpackEnv) {
         }
       );
     }
+    if (preProcessor) {
+      if (preProcessor === 'less-loader') { // 为less-loader添加配置项，启动javascript
+        loaders.push({
+          loader: require.resolve(preProcessor),
+          options: {
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+            modifyVars: { // 修改主题颜色
+              'primary-color': '#f9c700',
+            },
+            javascriptEnabled: true // 解决上文报错
+          },
+        });
+      } else {
+        loaders.push({
+          loader: require.resolve(preProcessor),
+          options: {
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+          },
+        });
+      }
+    }
     return loaders;
   };
 
@@ -396,6 +417,10 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  [
+                    "import",
+                    {libraryName: "antd", style: true}
+                  ]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -538,7 +563,7 @@ module.exports = function(webpackEnv) {
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
-              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              exclude: [/\.(js|mjs|jsx|ts|tsx)$/,/\.html$/, /\.json$/],
               options: {
                 name: 'static/media/[name].[hash:8].[ext]',
               },
