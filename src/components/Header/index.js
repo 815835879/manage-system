@@ -1,6 +1,8 @@
 import React from 'react'
 import { Row, Col } from 'antd'
 import './index.less'
+import Util from '../../utils/utils'
+import axios from '../../axios';
 
 export default class Header extends React.Component {
   state = {
@@ -8,6 +10,24 @@ export default class Header extends React.Component {
     sysTime: '2019-12-4 16:05',
     dayPictureUrl: '',
     weather: '晴转多云'
+  }
+  componentWillMount() {
+    setInterval(() => {
+      let sysTime = Util.formateDate(new Date().getTime());
+      this.setState({
+        sysTime
+      })
+    }, 1000)
+    this.getWeatherAPIData()
+  }
+
+  getWeatherAPIData() {
+    let city = '上海';
+    axios.jsonp({
+      url: 'http://api.map.baidu.com/telematics/v3/weather?location='+encodeURIComponent(city)+'&output=json&ak=3p49MVra6urFRGOT9s8UBWr2'
+    }).then((res) => {
+      console.log(res)
+    })
   }
   render() {
     return(
