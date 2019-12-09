@@ -23,21 +23,20 @@ export default class NavLeft extends React.Component {
         )
       }
       return <Menu.Item title={item.title} key={item.key}>
-        {/* <NavLink to={item.key}>{item.title}</NavLink> */}
-        {item.title}
+        <NavLink to={`/admin${item.key}`}>{item.title}</NavLink>
+        {/* {item.title} */}
       </Menu.Item>
     })
   }
   render() {
     return(
       <div>
-        {/* <NavLink to="/home">
-
-        </NavLink> */}
-        <div className="logo">
-          <img src="/assets/logo-ant.svg" alt="" />
-          <h1>General MS</h1>
-        </div>
+        <NavLink to="/home">
+          <div className="logo">
+            <img src="/assets/logo-ant.svg" alt="" />
+            <h1>General MS</h1>
+          </div>
+        </NavLink>
         <Menu
           theme="dark"
         >

@@ -30,6 +30,8 @@ export default class Header extends React.Component {
           weather: data.weather
         })
       }
+    }).catch((res) => {
+      console.log("天气加载失败")
     })
   }
   render() {
