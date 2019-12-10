@@ -5,6 +5,8 @@ import Admin from  './admin'
 import Login from './pages/login'
 import Home from './pages/home'
 import Buttons from './pages/ui/buttons'
+import Modals from './pages/ui/modals'
+import Loadings from './pages/ui/loadings'
 import NoMatch from './pages/nomatch'
 
 export default class MRouter extends React.Component{
@@ -18,6 +20,8 @@ export default class MRouter extends React.Component{
               <Switch>
                 <Route path="/admin/home" component={Home} />
                 <Route path="/admin/ui/buttons" component={Buttons} />
+                <Route path="/admin/ui/modals" component={Modals} />
+                {/* <Route path="/admin/ui/loadings" component={Loadings} /> */}
                 <Route component={NoMatch} />
               </Switch>
             </Admin>
