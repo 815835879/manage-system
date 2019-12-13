@@ -1,9 +1,9 @@
 import React from 'react'
 import { Card, Form, Input, Button, message, Icon, Checkbox } from 'antd'
-const FormItem = Form.item
+const FormItem = Form.Item
 class FormLogin extends React.Component{
   handleSubmit = () => {
-    let userInfo = this.props.getFieldsValue()
+    let userInfo = this.props.form.getFieldsValue()
     this.props.form.validateFields((err,values) => {
       if(!err){
         message.success(`${userInfo.userName}恭喜你，您已经成功登录，当前密码为${userInfo.userPwd}`)
@@ -12,7 +12,7 @@ class FormLogin extends React.Component{
   }
 
   render() {
-    const { getFieldDecorator } = this.props.Form
+    const { getFieldDecorator } = this.props.form
     return(
       <div>
         <Card title="行内登录表单">

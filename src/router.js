@@ -14,6 +14,7 @@ import Gallery from './pages/ui/gallery'
 import Carousel from './pages/ui/carousel'
 import NoMatch from './pages/nomatch'
 import FormLogin from './pages/form/login'
+import FormRegister from './pages/form/register'
 
 export default class MRouter extends React.Component{
   render() {
@@ -34,6 +35,7 @@ export default class MRouter extends React.Component{
                 <Route path="/admin/ui/gallery" component={Gallery} />
                 <Route path="/admin/ui/carousel" component={Carousel} />
                 <Route path="/admin/form/login" component={FormLogin} />
+                <Route path="/admin/form/reg" component={FormRegister} />
                 <Route component={NoMatch} />
               </Switch>
             </Admin>
